@@ -6,3 +6,8 @@
   <li>Interests: <%= @user[:interests].join(', ') %></li>
 </ul>
 
+<ul>
+  <% other_users(@user[:id]).each do |user|%>
+    <li><a href="/users/<%= user[:id]%>"><%= user[:name]%></a>
+  <% end %>
+</ul>

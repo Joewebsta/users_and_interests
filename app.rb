@@ -16,7 +16,7 @@ end
 
 get '/users' do
   @title = 'Users'
-  @user_info = user_id_and_name
+  @user_info = user_ids_and_names
 
   erb :users
 end
@@ -33,8 +33,10 @@ not_found do
 end
 
 helpers do
-  def format(interests)
-    interests.join(', ')
+  def other_users(id)
+    user_ids_and_names.filter do |user|
+      user[:id] != id
+    end
   end
 end
 
@@ -52,7 +54,7 @@ def each_user
   end
 end
 
-def user_id_and_name
+def user_ids_and_names
   users = []
 
   each_user do |id, name|
