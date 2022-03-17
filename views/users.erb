@@ -1,7 +1,7 @@
 <h1><%= @title %></h1>
 
 <ul>
-  <% @user_basic_info.each do |user| %>
+  <% @user_info.each do |user| %>
     <li>
       <a href="/users/<%= user[:id] %>"><%= user[:name] %></a>
     </li>
