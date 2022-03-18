@@ -7,7 +7,6 @@ require 'yaml'
 
 before do
   @users = YAML.load_file('data/users.yml')
-  # Should this be here or /users?
 end
 
 get '/' do
@@ -38,9 +37,17 @@ helpers do
       user[:id] != id
     end
   end
-end
 
-# Create two iterator methods. 1 for /users and 1 for users/id?
+  def count_interests(users)
+    users.values.reduce(0) do |count, user|
+      count + user[:interests].size
+    end
+  end
+
+  def count_users(_users)
+    @users.keys.size
+  end
+end
 
 def each_user
   user_names = @users.keys
@@ -59,7 +66,6 @@ def user_ids_and_names
 
   each_user do |id, name|
     users << { id: id, name: name.capitalize }
-    # Add key value pair for list of other names?
   end
 
   users
