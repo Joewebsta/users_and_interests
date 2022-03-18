@@ -1,9 +1,11 @@
 <h1><%= @title %></h1>
 
 <ul>
-  <% @user_info.each do |user| %>
+  <% @users.keys.each do |name| %>
     <li>
-      <a href="/users/<%= user[:id] %>"><%= user[:name] %></a>
+      <a href="/<%= name %>">
+        <%= name %>
+      </a>
     </li>
   <% end %>
 </ul>

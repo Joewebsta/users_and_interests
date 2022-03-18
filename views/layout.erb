@@ -12,7 +12,7 @@
   <body>
     <%= yield %>
 
-    <p>There are <%= count_users(@users) %> users with a total of <%= count_interests(@users) %> interests</p>
+    <p>There are <%= @users.size %> users with a total of <%= count_interests(@users) %> interests</p>
     <script type="text/javascript" src="javascripts/app.js"></script>
   </body>
   

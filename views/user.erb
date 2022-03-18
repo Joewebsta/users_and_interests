@@ -1,13 +1,15 @@
 
-<h1><%= @user[:name] %></h1>
+<h1><%= @name %></h1>
 
 <ul>
-  <li>Email: <%= @user[:email]%></li>
-  <li>Interests: <%= @user[:interests].join(', ') %></li>
+  <li>Email: <%= @email%></li>
+  <li>Interests: <%= @interests.join(', ') %></li>
 </ul>
 
 <ul>
-  <% other_users(@user[:id]).each do |user|%>
-    <li><a href="/users/<%= user[:id]%>"><%= user[:name]%></a>
+  <% @users.each do |name, _|%>
+    <% unless name == @name %>
+      <li><a href="<%= name %>"><%= name %></a>
+    <% end %>
   <% end %>
 </ul>
